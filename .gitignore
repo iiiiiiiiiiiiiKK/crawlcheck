@@ -39,3 +39,7 @@ pnpm-debug.log*
 # local debug artefacts
 shots/
 
+
+# local publishing helpers
+.tmp/
+

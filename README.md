@@ -57,6 +57,14 @@ Most "SEO checkers" are lead-generation pages: they ask for your domain, hide th
 
 The demo report (`Demo` tab) runs a built-in sample site through the *real* analyser, so you can see a full report without entering a URL. Demo reports are labelled and never written to your history.
 
+### Production verification
+
+After every deploy the live site is exercised end to end (page load, demo report, robots/sitemap views, JSON export, local check + history) plus an iPhone/WebKit pass with a no-horizontal-scroll assertion. Latest run against production: **16/16 checks passed**, no console errors, no failed asset requests.
+
+<p align="center">
+  <img src="./docs/screenshots/11-production.png" alt="CrawlCheck running on GitHub Pages" width="820">
+</p>
+
 ## Features
 
 | Area | What CrawlCheck checks |
