@@ -1,0 +1,24 @@
+#:schema node_modules/wrangler/config-schema.json
+
+# CrawlCheck scan service (optional server-side companion to the static app).
+#
+#   npx wrangler deploy
+#
+# Free plan notes: Workers free tier allows 100k requests/day and 10ms CPU per
+# request, which is enough for a personal deployment. The per-IP rate limit below
+# lives in isolate memory, so it is a soft limit (see README "Known limitations").
+
+name = "crawlcheck-scan"
+main = "src/index.ts"
+compatibility_date = "2026-01-01"
+
+[vars]
+# Comma separated list of allowed browser origins. Keep "*" only if you want a
+# public service; set it to your Pages URL to lock it down, e.g.
+# ALLOWED_ORIGINS = "https://iiiiiiiiiiiiiKK.github.io"
+ALLOWED_ORIGINS = "*"
+RATE_LIMIT_MAX = "30"
+RATE_LIMIT_WINDOW_SEC = "600"
+
+[observability]
+enabled = true

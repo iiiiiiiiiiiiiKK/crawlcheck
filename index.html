@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>CrawlCheck — Know how crawlers see your website</title>
+    <meta
+      name="description"
+      content="CrawlCheck audits robots.txt, sitemap.xml, HTML meta, canonical and basic crawl configuration. Local-first, privacy-friendly, open source."
+    />
+    <meta name="theme-color" content="#0b0c0e" />
+    <meta name="color-scheme" content="dark light" />
+    <meta property="og:title" content="CrawlCheck — Know how crawlers see your website" />
+    <meta
+      property="og:description"
+      content="A local-first technical SEO checker for robots.txt, sitemaps, HTML meta, canonical and crawl configuration."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@0xkillcoin" />
+    <script>
+      // Apply the stored theme before first paint to avoid a flash of the wrong palette.
+      (function () {
+        try {
+          var stored = localStorage.getItem('crawlcheck.theme') || 'system';
+          var dark = stored === 'dark' || (stored !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          document.documentElement.classList.toggle('dark', dark);
+          document.documentElement.style.colorScheme = dark ? 'dark' : 'light';
+        } catch (error) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
