@@ -18,13 +18,20 @@ export default defineConfig({
     acceptDownloads: true,
     locale: 'en-US',
     timezoneId: 'Asia/Shanghai',
-    launchOptions: {
-      // The VM used for verification has no usable GPU; software rendering keeps runs stable.
-      args: ['--disable-gpu', '--disable-software-rasterizer', '--disable-dev-shm-usage'],
-    },
   },
   projects: [
-    { name: 'desktop', use: { ...devices['Desktop Chrome'], viewport: { width: 1360, height: 900 } } },
+    {
+      name: 'desktop',
+      use: {
+        ...devices['Desktop Chrome'],
+        viewport: { width: 1360, height: 900 },
+        launchOptions: {
+          // Headless machines without a usable GPU need software rendering.
+          // These are Chromium flags and must not be passed to WebKit.
+          args: ['--disable-gpu', '--disable-software-rasterizer', '--disable-dev-shm-usage'],
+        },
+      },
+    },
     { name: 'iphone', use: { ...devices['iPhone 13'] } },
   ],
   webServer: {
